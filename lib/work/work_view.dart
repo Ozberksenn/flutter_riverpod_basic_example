@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpodworks/work/work_controller.dart';
 
+import 'widgets/person_card_widget.dart';
+
 final controller = ChangeNotifierProvider((ref) => WorkController());
 
 class WorkView extends ConsumerStatefulWidget {
@@ -23,27 +25,27 @@ class _HomeViewState extends ConsumerState<WorkView> {
     var watch = ref.watch(controller);
     return Scaffold(
         appBar: AppBar(
-          title: Text("asdasd"),
+          title: const Text("Person List"),
         ),
         body: watch.isLoading == true
-            ? ListView.builder(
-                shrinkWrap: true,
-                itemCount: watch.users.length,
-                itemBuilder: (context, index) {
-                  return Card(
-                    child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 100,
-                      color: Colors.amber,
-                      child: ListTile(
-                        title: Text(
-                          watch.users[index]!.firstName.toString(),
-                          style: TextStyle(color: Colors.black),
+            ? Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ListView.separated(
+                    shrinkWrap: true,
+                    itemCount: watch.users.length,
+                    separatorBuilder: (context, index) {
+                      return const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 8.0),
+                        child: Divider(
+                          indent: 20,
+                          endIndent: 20,
                         ),
-                      ),
-                    ),
-                  );
-                })
+                      );
+                    },
+                    itemBuilder: (context, index) {
+                      return personCard(context, watch, index);
+                    }),
+              )
             : const CircularProgressIndicator());
   }
 }
