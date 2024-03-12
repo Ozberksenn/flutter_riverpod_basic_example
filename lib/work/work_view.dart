@@ -67,7 +67,13 @@ class _HomeViewState extends ConsumerState<WorkView>
                               );
                             },
                             itemBuilder: (context, index) {
-                              return personCard(context, watch, index);
+                              return personCard(context,
+                                  firstName: watch.users[index]?.firstName,
+                                  lastName: watch.users[index]?.lastName,
+                                  email: watch.users[index]?.email,
+                                  image: watch.users[index]?.avatar, onTap: () {
+                                watch.savedPersons(watch.users[index]!);
+                              });
                             })
                         : ListView.separated(
                             shrinkWrap: true,
@@ -82,8 +88,11 @@ class _HomeViewState extends ConsumerState<WorkView>
                               );
                             },
                             itemBuilder: (context, index) {
-                              return Text(
-                                  watch.savedList[index]!.firstName.toString());
+                              return personCard(context,
+                                  firstName: watch.savedList[index]?.firstName,
+                                  lastName: watch.savedList[index]?.lastName,
+                                  email: watch.savedList[index]?.email,
+                                  image: watch.savedList[index]?.avatar);
                             }),
                   )
                 : const CircularProgressIndicator()

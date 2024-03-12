@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:riverpodworks/work/work_controller.dart';
 
-Widget personCard(BuildContext context, WorkController watch, int index) {
+Widget personCard(context,
+    {String? image,
+    String? firstName,
+    String? lastName,
+    String? email,
+    Function? onTap}) {
   return Card(
     child: SizedBox(
       width: MediaQuery.of(context).size.width,
@@ -10,32 +14,31 @@ Widget personCard(BuildContext context, WorkController watch, int index) {
           leading: Container(
             width: 40,
             height: 40,
-            decoration: watch.users[index]!.avatar != null
+            decoration: image != null
                 ? BoxDecoration(
                     shape: BoxShape.circle,
-                    image: DecorationImage(
-                        image: NetworkImage(
-                            watch.users[index]!.avatar.toString())))
+                    image: DecorationImage(image: NetworkImage(image)))
                 : null,
           ),
           title: Row(
             children: [
               Text(
-                watch.users[index]!.firstName.toString(),
+                firstName ?? '', // watch.users[index]!.firstName.toString(),
                 style: const TextStyle(color: Colors.black),
               ),
               Text(
-                ' ${watch.users[index]!.lastName}',
+                lastName ?? '', // ' ${watch.users[index]!.lastName}',
                 style: const TextStyle(color: Colors.black),
               ),
             ],
           ),
           subtitle: Text(
-            watch.users[index]!.email.toString(),
+            email ?? '', // watch.users[index]!.email.toString(),
             style: const TextStyle(color: Colors.black),
           ),
           trailing: IconButton(
-            onPressed: () => watch.savedPersons(watch.users[index]!),
+            onPressed: () => onTap!(),
+            // onPressed: () => watch.savedPersons(watch.users[index]!),
             icon: const Icon(CupertinoIcons.add),
           )),
     ),
