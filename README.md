@@ -1,16 +1,6 @@
 # riverpodworks
+Basic Example with Flutter riverpod  :)
 
-A new Flutter project.
+<img width="330" alt="Ekran Resmi 2024-03-12 23 26 18" src="https://github.com/Ozberksenn/flutter_riverpod_basic_example/assets/96706849/946ea538-da8c-44de-9ef2-2d5071fcc4f4">
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img width="330" alt="Ekran Resmi 2024-03-12 23 26 30" src="https://github.com/Ozberksenn/flutter_riverpod_basic_example/assets/96706849/342a845c-f76d-4838-9d88-786b36909bf8">
