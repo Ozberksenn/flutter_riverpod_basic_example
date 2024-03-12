@@ -40,12 +40,38 @@ class _HomeViewState extends ConsumerState<WorkView>
                 onTap: (value) {
                   watch.tabIndexChange(value);
                 },
-                tabs: const <Widget>[
+                tabs: <Widget>[
                   Tab(
-                    icon: Icon(CupertinoIcons.person_add_solid),
+                    icon: Row(
+                      children: [
+                        const Row(
+                          children: [
+                            Icon(CupertinoIcons.person_add_solid),
+                            Text('Katılımcılar')
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Text(watch.users.length.toString()),
+                        )
+                      ],
+                    ),
                   ),
                   Tab(
-                    icon: Icon(CupertinoIcons.person_2_alt),
+                    icon: Row(
+                      children: [
+                        const Row(
+                          children: [
+                            Icon(CupertinoIcons.person_2_alt),
+                            Text('Kayıtlı Olanlar')
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Text(watch.savedList.length.toString()),
+                        )
+                      ],
+                    ),
                   ),
                 ],
               ),
